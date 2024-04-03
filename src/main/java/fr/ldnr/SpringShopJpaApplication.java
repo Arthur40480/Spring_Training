@@ -28,7 +28,7 @@ public class SpringShopJpaApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String...args) throws Exception {
-//		Category smartphone = categoryRepository.save(new Category("Smartphone"));
+		Category smartphone = categoryRepository.save(new Category("Smartphone"));
 //		Category pc = categoryRepository.save(new Category("PC"));
 //		Category tablet = categoryRepository.save(new Category("Tablet"));
 //		
@@ -55,6 +55,10 @@ public class SpringShopJpaApplication implements CommandLineRunner {
 		
 // 		EXERCICE 1.4
 //		deleteArticleById(Long.valueOf(10));
+		
+// 		EXERCICE 1.5
+		updateArticleById(Long.valueOf(1), new Article("Motorola", "modèle1", 30, smartphone));
+
 		
 	}
 	
@@ -100,5 +104,27 @@ public class SpringShopJpaApplication implements CommandLineRunner {
 	 */
 	private void deleteArticleById(Long articleId) {
 		articleRepository.deleteById(articleId);
+	}
+	
+	/**
+	 * Met à jour un article via sont ID
+	 * @param articleId
+	 * @param updateArticleData
+	 */
+	private void updateArticleById(Long articleId, Article updateArticleData) {
+		Article articleToUpdate = articleRepository.findById(articleId).orElse(null);
+		if(articleToUpdate!= null) {
+			articleToUpdate.setDescription(updateArticleData.getDescription());
+			articleToUpdate.setBrand(updateArticleData.getBrand());
+			articleToUpdate.setPrice(updateArticleData.getPrice());
+			articleToUpdate.setCategory(updateArticleData.getCategory());
+			
+			articleRepository.save(articleToUpdate);
+			
+			System.out.println("Article mis à jour avec succès :" + articleToUpdate);
+		}else {
+			System.out.println("Mise à jour impossible, aucun article trouvé");
+
+		}
 	}
 }
