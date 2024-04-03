@@ -29,5 +29,5 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
 	@Modifying
 	@Query("update Article set description = :description, brand = :brand, price = :price, category.id = :categoryId where id = :id")
 	void updateArticle(@Param("description") String description, @Param("brand") String brand, @Param("price") double price, @Param("categoryId") Long categoryId, @Param("id") Long id);
-
+	public List<Article> findAllByOrderByDescriptionAsc();
 }

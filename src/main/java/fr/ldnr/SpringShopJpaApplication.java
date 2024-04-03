@@ -63,7 +63,9 @@ public class SpringShopJpaApplication implements CommandLineRunner {
 //		displayCategoryByNameAsc();
 //		displayCategoryByNameDesc();
 
-		
+		for(Article article : articleRepository.findAllByOrderByDescriptionAsc()) {
+			System.out.println(article);
+		}
 	}
 	
 	/**
