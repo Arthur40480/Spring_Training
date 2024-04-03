@@ -26,7 +26,9 @@ public class SpringShopJpaApplication implements CommandLineRunner {
 	@Override
 	public void run(String...args) throws Exception {
 //		categoryRepository.save(new Category("Smartphone"));
-		for(Article article : articleRepository.findByBrand("Samsung")) {
+//		articleRepository.save(new Article("Samsung", "S10", 800));
+//		articleRepository.save(new Article("Apple", "18", 8000));		
+		for(Article article : articleRepository.findByBrandContainsAndPriceGreaterThan("Sam",250)) {
 			System.out.println(article.toString());
 		}
 	}
