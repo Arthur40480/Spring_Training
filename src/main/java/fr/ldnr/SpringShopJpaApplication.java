@@ -57,7 +57,7 @@ public class SpringShopJpaApplication implements CommandLineRunner {
 //		deleteArticleById(Long.valueOf(10));
 		
 // 		EXERCICE 1.5
-//		updateArticleById(Long.valueOf(1), new Article("Motorola", "modèle1", 30, smartphone));
+//		updateArticleById(Long.valueOf(9), new Article("Motorola", "modèle1", 30, smartphone));
 		
 // 		EXERCICE 1.6
 //		displayCategoryByNameAsc();
@@ -118,12 +118,13 @@ public class SpringShopJpaApplication implements CommandLineRunner {
 	private void updateArticleById(Long articleId, Article updateArticleData) {
 		Article articleToUpdate = articleRepository.findById(articleId).orElse(null);
 		if(articleToUpdate!= null) {
-			articleToUpdate.setDescription(updateArticleData.getDescription());
-			articleToUpdate.setBrand(updateArticleData.getBrand());
-			articleToUpdate.setPrice(updateArticleData.getPrice());
-			articleToUpdate.setCategory(updateArticleData.getCategory());
-			
-			articleRepository.save(articleToUpdate);
+//			articleToUpdate.setDescription(updateArticleData.getDescription());
+//			articleToUpdate.setBrand(updateArticleData.getBrand());
+//			articleToUpdate.setPrice(updateArticleData.getPrice());
+//			articleToUpdate.setCategory(updateArticleData.getCategory());
+//			
+//			articleRepository.save(articleToUpdate);
+			articleRepository.updateArticle(updateArticleData.getDescription(), updateArticleData.getBrand(), updateArticleData.getPrice(), updateArticleData.getCategory().getId(), articleId);
 			
 			System.out.println("Article mis à jour avec succès :" + articleToUpdate);
 		}else {
