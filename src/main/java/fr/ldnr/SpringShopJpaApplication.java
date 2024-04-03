@@ -52,10 +52,14 @@ public class SpringShopJpaApplication implements CommandLineRunner {
 // 		EXERCICE 1.3
 //		List<Article> articleList = displayArticleByDescriptionAndBrand("Ipad", "Apple");
 //		System.out.println(articleList);
+		
+// 		EXERCICE 1.4
+//		deleteArticleById(Long.valueOf(10));
+		
 	}
 	
 	/**
-	 * Méthode qui renvoi un article via sont ID
+	 * Renvoi un article via sont ID
 	 * @param articleId
 	 */
 	private void displayArticleById(Long articleId) { 
@@ -75,7 +79,7 @@ public class SpringShopJpaApplication implements CommandLineRunner {
 	}
 	
 	/**
-	 * Méthode qui renvoi une liste d'Article via leurs description et leurs marque
+	 * Renvoi une liste d'Article via leurs description et leurs marque
 	 * @param description
 	 * @param brand
 	 * @return articleList
@@ -89,4 +93,12 @@ public class SpringShopJpaApplication implements CommandLineRunner {
 			return articleList;
 			}
 		}
+	
+	/**
+	 * Supprime un article via son ID
+	 * @param articleId
+	 */
+	private void deleteArticleById(Long articleId) {
+		articleRepository.deleteById(articleId);
 	}
+}
