@@ -45,10 +45,19 @@ public class SpringShopJpaApplication implements CommandLineRunner {
 //			System.out.println(article);
 //		}
 		
+// 		EXERCICE 1.2	
 //		displayArticleById(Long.valueOf(10));
-		displayAllArticle();
+//		displayAllArticle();
+		
+// 		EXERCICE 1.3
+//		List<Article> articleList = displayArticleByDescriptionAndBrand("Ipad", "Apple");
+//		System.out.println(articleList);
 	}
 	
+	/**
+	 * Méthode qui renvoi un article via sont ID
+	 * @param articleId
+	 */
 	private void displayArticleById(Long articleId) { 
 	    Article article = articleRepository.findById(articleId).orElse(null);
 	    if (article != null) {  
@@ -64,5 +73,20 @@ public class SpringShopJpaApplication implements CommandLineRunner {
 			System.out.println(article);
 		}
 	}
-
-}
+	
+	/**
+	 * Méthode qui renvoi une liste d'Article via leurs description et leurs marque
+	 * @param description
+	 * @param brand
+	 * @return articleList
+	 */
+	private List<Article> displayArticleByDescriptionAndBrand(String description, String brand) {
+		List<Article> articleList = articleRepository.findByDescriptionAndBrand(description, brand);
+		if(articleList.isEmpty()) {
+			System.out.println("Aucun article trouver");
+			return articleList;
+		}else {
+			return articleList;
+			}
+		}
+	}
