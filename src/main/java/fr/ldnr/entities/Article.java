@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Article implements Serializable {
@@ -17,7 +18,17 @@ public class Article implements Serializable {
 	private String description;
 	private double price;
 	
+	@ManyToOne
+	private Category category;
+	
 	public Article() {}
+	
+	public Article(String brand, String description, double price, Category category) {
+		this.brand = brand;
+		this.description = description;
+		this.price = price;
+		this.category = category;
+	}
 	
 	public Article(String brand, String description, double price) {
 		this.brand = brand;
