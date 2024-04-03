@@ -1,6 +1,7 @@
 package fr.ldnr.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,6 +11,7 @@ import fr.ldnr.entities.Article;
 
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
+	public Optional<Article> findById(Long articleId);
 	public List<Article> findByBrand(String brand);
 	public List<Article> findByBrandContains(String brand);
 	public List<Article> findByBrandContainsAndPriceGreaterThan(String brand, double price);

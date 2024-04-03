@@ -28,6 +28,10 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 	
+	public String toString() {
+		return "Category: " + this.name;
+	}
+	
 	public Long getId() {
 		return id;
 	}

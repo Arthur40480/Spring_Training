@@ -44,7 +44,15 @@ public class Article implements Serializable {
 	}
 	
 	public String toString() {
-		return "Article [id=" + this.id + " marque=" + this.brand + " description=" + this.description + " prix=" + this.price + "]";
+		return "Article [id=" + this.id + " marque=" + this.brand + " description=" + this.description + " prix=" + this.price + " " + this.category + "]";
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public String getDescription() {
