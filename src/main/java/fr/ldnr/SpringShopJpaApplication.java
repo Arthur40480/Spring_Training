@@ -57,7 +57,11 @@ public class SpringShopJpaApplication implements CommandLineRunner {
 //		deleteArticleById(Long.valueOf(10));
 		
 // 		EXERCICE 1.5
-		updateArticleById(Long.valueOf(1), new Article("Motorola", "modèle1", 30, smartphone));
+//		updateArticleById(Long.valueOf(1), new Article("Motorola", "modèle1", 30, smartphone));
+		
+// 		EXERCICE 1.6
+//		displayCategoryByNameAsc();
+//		displayCategoryByNameDesc();
 
 		
 	}
@@ -125,6 +129,34 @@ public class SpringShopJpaApplication implements CommandLineRunner {
 		}else {
 			System.out.println("Mise à jour impossible, aucun article trouvé");
 
+		}
+	}
+	
+	/**
+	 * Affiche les catégory par ordre croissant
+	 */
+	private void displayCategoryByNameAsc() {
+		List<Category> categoryList = categoryRepository.findAllByOrderByNameAsc();
+		if(categoryList.isEmpty()) {
+			System.out.println("Aucune catégorie");
+		}else {
+			for(Category category : categoryList) {
+				System.out.println(category);
+			}
+		}
+	}
+	
+	/**
+	 * Affiche les catégory par ordre décroissant
+	 */
+	private void displayCategoryByNameDesc() {
+		List<Category> categoryList = categoryRepository.findAllByOrderByNameDesc();
+		if(categoryList.isEmpty()) {
+			System.out.println("Aucune catégorie");
+		}else {
+			for(Category category : categoryList) {
+				System.out.println(category);
+			}
 		}
 	}
 }
